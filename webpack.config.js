@@ -3,7 +3,7 @@ const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
     entry: {
-        app: "./src/app.js"
+        app: "./src/app.ts"
     },
     output: {
         path: path.resolve(__dirname, 'build'),
@@ -20,7 +20,12 @@ module.exports = {
                 presets: ['@babel/preset-env']
                 }
             }
-            }
+            },
+            {
+                test: /\.tsx?$/,
+                use: 'ts-loader',
+                exclude: /node_modules/,
+            },
         ]
     },
     devServer: {
